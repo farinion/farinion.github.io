@@ -8,16 +8,18 @@
 	
 <script id="tableTemplate" type="tex/x-handlebars-template">
 	<table>
+		<tr><td>Name</td><td>Major</td><td>Midterm</td><td>Final</td></tr>
 		{{#each rows}}
 			<tr>
 				<td>{{name}}</td><td>{{major}}</td><td>{{midterm}}</td><td>{{final}}</td>
-			<tr>
+			</tr>
 		{{/each}}
 	</table>
 <script>
 	
 	
 <script type = "text/javascript">
+
 
 
 	
@@ -41,7 +43,7 @@
 				if (request.status == 200) {
 					var templateText = document.getElementByID('tableTemplate').innerHTML;   //Get template text
 					var compiledTemplateText = Handlebars.compile(templateText);		 //Compile template
-					compiledHtml = compiledTemplateText({rows: CITMajors})			//populate template with CITMajors 
+					compiledHtml = compiledTemplateText({ rows: CITMajors })			//populate template with CITMajors 
 					document.getElementByID("tableDisplay").innerHTML = compiledHtml;	//insert html into div
 				} //end if
 			}//end "onload"
