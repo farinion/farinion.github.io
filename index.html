@@ -20,11 +20,6 @@
 	
 <script type = "text/javascript">
 
-
-
-	
-	
-	
 	
 	document.addEventListener('DOMContentLoaded', function() {
 
@@ -46,8 +41,12 @@
 					compiledHtml = compiledTemplateText({ rows: CITMajors })			//populate template with CITMajors 
 					document.getElementById("tableDisplay").innerHTML = compiledHtml;	//insert html into div
 				} //end if
+				else {
+					document.getElementById("tableDisplay").innerHTML = "There was an error.";
+				}//end else
 			}//end "onload"
-		}//end "onClick"
+			request.send(null);
+		};//end "onClick"
 	
 	
 		
@@ -66,5 +65,5 @@
 
 	<h3>We filter our dataset by major</h3>
 
-	<div id="tableDisplay">
+	<div id="tableDisplay"></div>
 </body>
