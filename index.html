@@ -47,6 +47,32 @@
 			}//end "onload"
 			request.send(null);
 		};//end "onClick"
+		
+		
+		document.querySelector('#businessMajorsButton').onclick = function() {
+		
+			var request = new XMLHttpRequest(); 			  	//datafile name
+			request.open('GET', 'cit5students.json'); 		  	//open ajax request
+			
+			request.onload = function() {
+				var allMajors = JSON.parse(request.responseText); 	//convert JSON to a regular array
+				
+				var BUSMajors = allMajors.filter(function(student) {	//Filter original array into arry of CIT majors
+					return student.major == "BUS";
+				});  //end filter
+			
+				if (request.status == 200) {
+					var templateText = document.getElementById('tableTemplate').innerHTML;   //Get template text
+					var compiledTemplateText = Handlebars.compile(templateText);		 //Compile template
+					compiledHtml = compiledTemplateText({ rows: BUSMajors })			//populate template with CITMajors 
+					document.getElementById("tableDisplay").innerHTML = compiledHtml;	//insert html into div
+				} //end if
+				else {
+					document.getElementById("tableDisplay").innerHTML = "There was an error.";
+				}//end else
+			}//end "onload"
+			request.send(null);
+		};//end "onClick"
 	
 	
 		
