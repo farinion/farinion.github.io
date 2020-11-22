@@ -1,12 +1,56 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>test</title>
+	<title>Programming Project 5</title>
+
+<script type = "text/javascript">
+	document.addEventListenr('DOMContentLoaded', function() {
+
+		document.querySelector('#CITMajorsButton').onclick = function() {
+			
+			var request = new XMLHttpRequest();
+			request.open('GET', 'file name');
+	
+			request.onload = function() {
+
+				if (request.status == 200) {
+					var contents = "<table cellspacing='5'><tr><td>Name</td><td>Major</td><td>Midterm</td><td>Final</td></tr>"
+
+					for(i = 0; i < data.length; i++) {
+						if (data.major == "CIT") {
+							contents += "<tr><td>data[i].name</td><td>data[i].major</td><td>data[i].midterm</td><td>data[i].final</td></tr>";
+						} //end "if"
+
+					} //end "for"
+				
+					contents += "</table>";
+					document.querySelector('#tableDisplay').innerHTML = contents;
+				} //end "if"
+
+				else {
+					document.querySelector('#tableDisplay').innerHTML = "There was an error.";
+				} //end "else"
+			}//end "request.onload"
+			
+			request.send(null);
+
+		}; //end "onclick"
+
+	});
+
+</script>
+
 </head>
+
 <body>
+	<h1>Select a Major</h2>
+	<p>
+		<input type = 'button' id = 'CITMajorsButton' value = "CIT Majors">
+		<input type = 'button' id = 'BusinessMajorsButton' value = "Business Majors">
+	</p>
 
-	<h1>Github Test Page</h1>
+	<h3>We filter our dataset by major</h3>
 
-	<p>Hello Github</p>
+	<div id="tableDisplay">
 </body>
