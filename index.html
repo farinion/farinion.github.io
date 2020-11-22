@@ -41,10 +41,10 @@
 				});  //end filter
 			
 				if (request.status == 200) {
-					var templateText = document.getElementByID('tableTemplate').innerHTML;   //Get template text
+					var templateText = document.getElementById('tableTemplate').innerHTML;   //Get template text
 					var compiledTemplateText = Handlebars.compile(templateText);		 //Compile template
 					compiledHtml = compiledTemplateText({ rows: CITMajors })			//populate template with CITMajors 
-					document.getElementByID("tableDisplay").innerHTML = compiledHtml;	//insert html into div
+					document.getElementById("tableDisplay").innerHTML = compiledHtml;	//insert html into div
 				} //end if
 			}//end "onload"
 		}//end "onClick"
